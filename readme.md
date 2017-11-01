@@ -34,25 +34,17 @@ roscore
 Open a new terminal window and run the following command to run talker. 
 
 ```
-rosrun beginner_tutorials talker
-```
-
-If it throws up error saying package cannot be found, run  the following command and then run the above command
-
-```
+cd ~/catkin_ws
 source devel/setup.bash
+rosrun beginner_tutorials talker
 ```
 
 Open a new terminal window and run the following command to run listener.
 
 ```
-rosrun beginner_tutorials listener
-```
-
-If it throws up error saying package cannot be found, run  the following command and then run the above command
-
-```
+cd ~/catkin_ws
 source devel/setup.bash
+rosrun beginner_tutorials listener
 ```
 
 To stop the nodes/master press Ctrl+C to exit
