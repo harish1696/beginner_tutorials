@@ -8,7 +8,7 @@ This program provides an introduction to publish and subscribe to topics in ROS.
 ## Dependencies
 This program works on a device running Ubuntu 16.04 and ROS Kinetic Kame
 
-To install ROS Kinetic Kame in Ubuntu 16.04, follow the steps in http://wiki.ros.org/kinetic/Installation/Ubuntu
+To install ROS Kinetic Kame in Ubuntu 16.04, follow the steps in this [link](http://wiki.ros.org/kinetic/Installation/Ubuntu)
 
 ## How to build
 Open a terminal window and run the following commands
