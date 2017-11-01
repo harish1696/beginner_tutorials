@@ -6,11 +6,11 @@
 This program provides an introduction to publish and subscribe to topics in ROS. It uses a talker(publisher) node and listener(subscriber) node to illustrate it.
 
 ## Dependencies
-This program works on a device running Ubuntu 16.04 and ROS Kinetic Kame
+This program works on a device running Ubuntu 16.04 and ROS Kinetic Kame.
 
-To install ROS Kinetic Kame in Ubuntu 16.04, follow the steps in this [link](http://wiki.ros.org/kinetic/Installation/Ubuntu)
+To install ROS Kinetic Kame in Ubuntu 16.04, follow the steps in this [link](http://wiki.ros.org/kinetic/Installation/Ubuntu).
 
-To install catkin, follow the installation steps in this [link](http://wiki.ros.org/catkin)
+To install catkin, follow the installation steps in this [link](http://wiki.ros.org/catkin).
 
 ## How to build
 Open a terminal window and run the following commands
