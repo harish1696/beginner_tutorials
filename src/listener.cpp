@@ -1,3 +1,16 @@
+/**
+ *  @file    listener.cpp
+ *  @author  Harish Sampathkumar
+ *  @copyright BSD License
+ *
+ *  @brief Implementing publisher and subscriber node
+ *
+ *  @section DESCRIPTION
+ *
+ *  This program defines the subscriber
+ *
+ */
+
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 
