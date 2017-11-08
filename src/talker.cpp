@@ -14,6 +14,7 @@
 #include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "beginner_tutorials/change_string.h"
 
 std::string text = "Default text";
 
