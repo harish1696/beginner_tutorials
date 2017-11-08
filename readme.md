@@ -67,7 +67,7 @@ rosrun beginner_tutorials listener
 
 To stop the nodes/master press Ctrl+C to exit
 
-##How to use the service
+## How to use the service
 Follow either 1 or 2 so that you get published and subscribed message.
 Now launch a new terminal window and run the following command
 
