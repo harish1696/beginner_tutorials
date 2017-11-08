@@ -15,6 +15,17 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 
+std::string text = "Default text";
+
+bool changeString(beginner_tutorials::change_string::Request &req,
+                  beginner_tutorials::change_string::Response &resp) {
+  resp.out = req.in;
+  text = resp.out;
+  ROS_WARN_STREAM("Changing the output String");
+  return true;
+}  
+
+
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.
 */
@@ -71,7 +82,7 @@ int main(int argc, char **argv) {
     std_msgs::String msg;
 
     std::stringstream ss;
-    ss << "Changed the string" << count;
+    ss << text << count;
     msg.data = ss.str();
     ROS_INFO("%s", msg.data.c_str());
 
