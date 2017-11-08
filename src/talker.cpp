@@ -18,6 +18,14 @@
 
 extern std::string text = "Default text";
 
+/**
+ * @brief      changeString
+ *
+ * @param      req  request
+ * @param      resp response
+ *
+ * @return     true if successful
+ */
 bool changeString(beginner_tutorials::change_string::Request &req,
                   beginner_tutorials::change_string::Response &resp) {
   resp.out = req.in;
@@ -60,11 +68,13 @@ int main(int argc, char **argv) {
     frequency = atoi(argv[1]);
     ROS_DEBUG_STREAM("The input argument is " << frequency);
   }
+  // Warning if the frequency is less than 0
   if (frequency < 0) {
     ROS_ERROR_STREAM("Invalid argument for frequency");
     frequency = 1;
     ROS_WARN_STREAM("Frequency changed to 1");
   }
+  // Showing Fatal message if frequency is 0
   if (frequency == 0) {
     ROS_FATAL_STREAM("Frequency is 0 hz");
   }
