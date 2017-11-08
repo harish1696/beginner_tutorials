@@ -16,7 +16,7 @@
 #include "std_msgs/String.h"
 #include "beginner_tutorials/change_string.h"
 
-std::string text = "Default text";
+extern std::string text = "Default text";
 
 bool changeString(beginner_tutorials::change_string::Request &req,
                   beginner_tutorials::change_string::Response &resp) {
@@ -24,7 +24,7 @@ bool changeString(beginner_tutorials::change_string::Request &req,
   text = resp.out;
   ROS_WARN_STREAM("Changing the output String");
   return true;
-}  
+}
 
 
 /**
@@ -51,21 +51,21 @@ int main(int argc, char **argv) {
    */
   ros::NodeHandle n;
 
-  int frequency;
-  
+  int frequency = 10;
+
   /* setting the frequency value to the input/default frequency
    * passed by launch file
    */
-  if(argc == 2) {
+  if (argc == 2) {
     frequency = atoi(argv[1]);
     ROS_DEBUG_STREAM("The input argument is " << frequency);
-  } 
-  if(frequency < 0) {
+  }
+  if (frequency < 0) {
     ROS_ERROR_STREAM("Invalid argument for frequency");
     frequency = 1;
     ROS_WARN_STREAM("Frequency changed to 1");
   }
-  if(frequency == 0) {
+  if (frequency == 0) {
     ROS_FATAL_STREAM("Frequency is 0 hz");
   }
 
