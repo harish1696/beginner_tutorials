@@ -68,6 +68,9 @@ int main(int argc, char **argv) {
    * buffer up before throwing some away.
    */
   auto chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+
+  auto server = n.advertiseService("change_string", changeString);
+
   ros::Rate loop_rate(10);
 
   /**
