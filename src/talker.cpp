@@ -50,6 +50,16 @@ int main(int argc, char **argv) {
    */
   ros::NodeHandle n;
 
+  int frequency;
+  
+  /* setting the frequency value to the input/default frequency
+   * passed by launch file
+   */
+  if(argc == 2) {
+    frequency = atoi(argv[1]);
+    ROS_DEBUG_STREAM("The input argument is " << frequency);
+  } 
+
   /**
    * The advertise() function is how you tell ROS that you want to
    * publish on a given topic name. This invokes a call to the ROS
@@ -71,7 +81,7 @@ int main(int argc, char **argv) {
 
   auto server = n.advertiseService("change_string", changeString);
 
-  ros::Rate loop_rate(10);
+  ros::Rate loop_rate(frequency);
 
   /**
    * A count of how many messages we have sent. This is used to create
