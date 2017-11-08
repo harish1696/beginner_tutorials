@@ -60,6 +60,14 @@ int main(int argc, char **argv) {
     frequency = atoi(argv[1]);
     ROS_DEBUG_STREAM("The input argument is " << frequency);
   } 
+  if(frequency < 0) {
+    ROS_ERROR_STREAM("Invalid argument for frequency");
+    frequency = 1;
+    ROS_WARN_STREAM("Frequency changed to 1");
+  }
+  if(frequency == 0) {
+    ROS_FATAL_STREAM("Frequency is 0 hz");
+  }
 
   /**
    * The advertise() function is how you tell ROS that you want to
