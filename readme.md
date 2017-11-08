@@ -29,6 +29,8 @@ catkin_make
 ```
 
 ## How to run demo
+Use either 1 or 2.
+
 1.Open a terminal window and run the following command to launch both the nodes
 
 ```
