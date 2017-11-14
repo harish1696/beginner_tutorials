@@ -15,8 +15,9 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "beginner_tutorials/change_string.h"
+#include <tf/transform_broadcaster.h>
 
-extern std::string text = "Default text";
+std::string text = "Default text";
 
 /**
  * @brief      changeString
@@ -58,6 +59,9 @@ int main(int argc, char **argv) {
    * NodeHandle destructed will close down the node.
    */
   ros::NodeHandle n;
+
+  tf::TransformBroadcaster br;
+  tf::Transform transform;
 
   int frequency = 10;
 
@@ -112,6 +116,12 @@ int main(int argc, char **argv) {
      * This is a message object. You stuff it with data, and then publish it.
      */
     std_msgs::String msg;
+
+    transform.setOrigin( tf::Vector3(2.0,3.0,0.0));
+    tf::Quaternion q;
+    q.setRPY(0, 0, 6.28);
+    transform.setRotation(q);
+    br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
 
     std::stringstream ss;
     ss << text << count;
