@@ -46,6 +46,34 @@
  *
  */
 
+#include <ros/ros.h>
+#include <ros/service_client.h>
+#include <tf/transform_listener.h>
+#include <gtest/gtest.h>
+#include "beginner_tutorials/change_string.h"
+
+/**
+ * @brief      testing if the service exists
+ *
+ * @param[in]     TESTSuite
+ * @param[in]     testService
+ *
+ * @return     none
+ */
+TEST(TESTSuite, testService) {
+  // Creating NodeHandle
+  ros::NodeHandle n;
+
+  // Create a client object for change_string service
+  ros::ServiceClient client =
+     n.serviceClient<beginner_tutorials::change_string>("change_string");
+
+  // checking the existence of the service used
+  bool exists(client.waitForExistence(ros::Duration(10)));
+
+  EXPECT_TRUE(exists);
+}
+
 /**
  * @brief      testing if the service works properly
  *
@@ -55,28 +83,24 @@
  * @return     none
  */
 TEST(TESTSuite, testchangeStringService) {
- // Creating NodeHandle
- ros::NodeHandle n;
+  // Creating NodeHandle
+  ros::NodeHandle n;
 
- // Create a client object for change_string service
- ros::ServiceClient client = n.serviceClient<beginner_tutorials::change_string>("change_string");
+  // Create a client object for change_string service
+  ros::ServiceClient client =
+   n.serviceClient<beginner_tutorials::change_string>("change_string");
 
- // creating an object of change_string
- beginner_tutorials::change_string srv;
- 
- // assigning input to srv data
- srv.request.in = "Hello";
- 
- // checking the existence of the service used 
- bool exists(client.waitForExistence(ros::Duration(10)));
- 
- EXPECT_TRUE(exists);
+  // creating an object of change_string
+  beginner_tutorials::change_string srv;
 
- // checks if the service call works properly
- bool success = client.call(srv);
+  // assigning input to srv data
+  srv.request.in = "Hello";
 
- EXPECT_TRUE(success);
- 
- // compares the input and output string of the service
- EXPECT_STREQ("Hello", srv.response.out.c_str());
+  // checks if the service call works properly
+  bool success = client.call(srv);
+
+  EXPECT_TRUE(success);
+
+  // compares the input and output string of the service
+  EXPECT_STREQ("Hello", srv.response.out.c_str());
 }
