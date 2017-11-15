@@ -45,13 +45,15 @@
  *
  */
 
+
+#include <tf/transform_broadcaster.h>
+#include <String.h>
 #include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "beginner_tutorials/change_string.h"
-#include <tf/transform_broadcaster.h>
 
-std::string text = "Default text";
+String s;
 
 /**
  * @brief      changeString
@@ -64,7 +66,7 @@ std::string text = "Default text";
 bool changeString(beginner_tutorials::change_string::Request &req,
                   beginner_tutorials::change_string::Response &resp) {
   resp.out = req.in;
-  text = resp.out;
+  s.text = resp.out;
   ROS_WARN_STREAM("Changing the output String");
   return true;
 }
@@ -151,17 +153,18 @@ int main(int argc, char **argv) {
      * This is a message object. You stuff it with data, and then publish it.
      */
     std_msgs::String msg;
-    
+
     // setting the origin and rotation for the transform object
-    transform.setOrigin( tf::Vector3(2.0,3.0,0.0));
+    transform.setOrigin(tf::Vector3(2.0, 3.0, 0.0));
     tf::Quaternion q;
     q.setRPY(0, 0, 6.28);
     transform.setRotation(q);
     // braoadcasting the transform using Transformbroadcaster
-    br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
+    br.sendTransform(tf::StampedTransform(transform,
+                    ros::Time::now(), "world", "talk"));
 
     std::stringstream ss;
-    ss << text << count;
+    ss << s.text << count;
     msg.data = ss.str();
     ROS_INFO("%s", msg.data.c_str());
 
