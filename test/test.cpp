@@ -65,7 +65,7 @@ TEST(TESTSuite, testService) {
   ros::NodeHandle n;
 
   // Create a client object for change_string service
-  ros::ServiceClient client =
+  auto client =
      n.serviceClient<beginner_tutorials::change_string>("change_string");
 
   // checking the existence of the service used
@@ -87,7 +87,7 @@ TEST(TESTSuite, testchangeStringService) {
   ros::NodeHandle n;
 
   // Create a client object for change_string service
-  ros::ServiceClient client =
+  auto client =
    n.serviceClient<beginner_tutorials::change_string>("change_string");
 
   // creating an object of change_string
